@@ -1,0 +1,473 @@
+<title>Grow With Townsend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root{
+    --ground:#F1F3EE;
+    --surface:#FFFFFF;
+    --surface-sunk:#E7EBE3;
+    --ink:#16211A;
+    --ink-soft:#4C5A50;
+    --line:#CFD6C9;
+    --evergreen:#1F4B36;
+    --evergreen-deep:#122B20;
+    --marigold:#C98A12;
+    --marigold-ink:#7A5206;
+    --ok:#3F7D53;
+    --shadow:0 1px 0 rgba(18,43,32,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#101812;
+      --surface:#17211B;
+      --surface-sunk:#1D2921;
+      --ink:#E9EEE7;
+      --ink-soft:#A3B1A6;
+      --line:#2C3B31;
+      --evergreen:#7FB79A;
+      --evergreen-deep:#0B140F;
+      --marigold:#E8B44A;
+      --marigold-ink:#F0CB84;
+      --ok:#7FB79A;
+      --shadow:0 1px 0 rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#101812;
+    --surface:#17211B;
+    --surface-sunk:#1D2921;
+    --ink:#E9EEE7;
+    --ink-soft:#A3B1A6;
+    --line:#2C3B31;
+    --evergreen:#7FB79A;
+    --evergreen-deep:#0B140F;
+    --marigold:#E8B44A;
+    --marigold-ink:#F0CB84;
+    --ok:#7FB79A;
+    --shadow:0 1px 0 rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:Archivo,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:24px}
+  h1,h2,h3{font-family:Fraunces,Georgia,"Times New Roman",serif;font-weight:600;text-wrap:balance;margin:0;line-height:1.08}
+  h1{font-size:clamp(2.6rem,7vw,4.6rem);letter-spacing:-.015em}
+  h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+  h3{font-size:1.15rem;line-height:1.25}
+  p{margin:0}
+  a{color:inherit}
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .lede{font-size:1.15rem;color:var(--ink-soft);max-width:60ch}
+
+  /* ---- top bar ---- */
+  .topbar{
+    display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+    padding-block:20px;border-bottom:1px solid var(--line);
+  }
+  .brand{display:flex;align-items:baseline;gap:10px;font-family:Fraunces,serif;font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+  .brand span{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:400}
+  .navlinks{display:flex;flex-wrap:wrap;gap:22px;font-size:.9rem}
+  .navlinks a{text-decoration:none;color:var(--ink-soft)}
+  .navlinks a:hover{color:var(--ink)}
+
+  /* ---- buttons ---- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:Archivo,sans-serif;font-size:.95rem;font-weight:600;
+    padding:13px 22px;border-radius:2px;border:1px solid transparent;
+    text-decoration:none;cursor:pointer;transition:transform .15s ease,background .15s ease;
+  }
+  .btn-primary{background:var(--evergreen);color:var(--ground)}
+  .btn-primary:hover{transform:translateY(-1px)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+  .btn-ghost:hover{background:var(--surface-sunk)}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--marigold);outline-offset:3px}
+
+  /* ---- hero ---- */
+  .hero{padding-block:clamp(40px,7vw,76px) 0;display:grid;gap:34px;grid-template-columns:1.15fr .85fr;align-items:end}
+  .hero-copy{display:flex;flex-direction:column;gap:22px}
+  .hero h1 em{font-style:normal;color:var(--evergreen)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .hero-note{font-size:.85rem;color:var(--ink-soft)}
+  .hero-panel{
+    background:var(--surface);border:1px solid var(--line);border-radius:2px;
+    padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow);
+  }
+  .stat-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-block:9px;border-bottom:1px dotted var(--line)}
+  .stat-row:last-child{border-bottom:0;padding-bottom:0}
+  .stat-row dt{font-size:.88rem;color:var(--ink-soft)}
+  .stat-row dd{margin:0;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:1.05rem;color:var(--ink)}
+
+  /* ---- season band ---- */
+  .season{margin-top:clamp(48px,8vw,84px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:26px}
+  .season-head{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;justify-content:space-between;margin-bottom:18px}
+  .season-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+  .season-cell{background:var(--ground);padding:16px 14px;display:flex;flex-direction:column;gap:6px}
+  .season-cell .mo{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em;color:var(--marigold-ink)}
+  :root[data-theme="dark"] .season-cell .mo{color:var(--marigold)}
+  .season-cell strong{font-family:Fraunces,serif;font-size:1.02rem;font-weight:600}
+  .season-cell p{font-size:.85rem;color:var(--ink-soft)}
+  .bar{height:4px;background:var(--surface-sunk);position:relative;overflow:hidden}
+  .bar i{position:absolute;inset:0;background:var(--evergreen);transform-origin:left;display:block}
+
+  /* ---- roles ---- */
+  section{padding-block:clamp(48px,8vw,84px)}
+  .sec-head{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:end;margin-bottom:28px}
+  .roles{display:flex;flex-direction:column}
+  .role{
+    display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) auto;
+    gap:14px 24px;align-items:center;
+    padding-block:22px;border-top:1px solid var(--line);
+  }
+  .role:last-child{border-bottom:1px solid var(--line)}
+  .role-title{display:flex;flex-direction:column;gap:6px}
+  .role-title p{font-size:.88rem;color:var(--ink-soft)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.06em;
+    padding:3px 8px;border:1px solid var(--line);color:var(--ink-soft);border-radius:999px;white-space:nowrap;
+  }
+  .tag.year{border-color:var(--ok);color:var(--ok)}
+  .pay{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:1rem}
+  .pay small{display:block;font-family:Archivo,sans-serif;font-size:.78rem;color:var(--ink-soft);letter-spacing:0}
+
+  /* ---- benefits ---- */
+  .benefits{background:var(--evergreen-deep);color:#E9EEE7}
+  .benefits .eyebrow{color:#9DB8A8}
+  .benefits h2{color:#F1F3EE}
+  .benefits .lede{color:#B9C8BD}
+  .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 32px;margin-top:32px}
+  .ben h3{color:#F1F3EE;margin-bottom:6px}
+  .ben p{font-size:.9rem;color:#B9C8BD}
+  .ben .num{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:#E8B44A;letter-spacing:.1em;display:block;margin-bottom:10px}
+
+  /* ---- steps ---- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step}
+  .step{display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:3px solid var(--evergreen)}
+  .step .n{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink-soft);letter-spacing:.12em}
+  .step p{font-size:.9rem;color:var(--ink-soft)}
+
+  /* ---- faq ---- */
+  details{border-bottom:1px solid var(--line);padding-block:16px}
+  details summary{
+    cursor:pointer;list-style:none;font-family:Fraunces,serif;font-size:1.08rem;font-weight:600;
+    display:flex;justify-content:space-between;gap:16px;align-items:center;
+  }
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--evergreen);font-size:1.2rem}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:10px;font-size:.94rem;color:var(--ink-soft);max-width:68ch}
+
+  /* ---- apply ---- */
+  .apply{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  form{display:flex;flex-direction:column;gap:14px}
+  label{display:flex;flex-direction:column;gap:6px;font-size:.85rem;color:var(--ink-soft)}
+  input,select,textarea{
+    font-family:Archivo,sans-serif;font-size:.95rem;color:var(--ink);
+    background:var(--ground);border:1px solid var(--line);border-radius:2px;padding:11px 12px;width:100%;
+  }
+  textarea{min-height:88px;resize:vertical}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .contact-line{display:flex;flex-direction:column;gap:4px;padding-block:12px;border-bottom:1px dotted var(--line)}
+  .contact-line span{font-size:.8rem;color:var(--ink-soft)}
+  .contact-line a,.contact-line strong{font-family:"IBM Plex Mono",monospace;font-size:.98rem;text-decoration:none}
+
+  footer{border-top:1px solid var(--line);padding-block:28px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:.85rem;color:var(--ink-soft)}
+  .note{
+    margin-top:20px;padding:14px 16px;border-left:3px solid var(--marigold);
+    background:var(--surface-sunk);font-size:.85rem;color:var(--ink-soft);border-radius:0 2px 2px 0;
+  }
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .season-grid{grid-template-columns:repeat(2,1fr)}
+    .ben-grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .apply{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    .role{grid-template-columns:1fr;align-items:start}
+    .season-grid{grid-template-columns:1fr}
+    .ben-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .field-row{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand">Townsend Landscape <span>Est. 1984</span></div>
+    <nav class="navlinks">
+      <a href="#roles">Open roles</a>
+      <a href="#benefits">Pay &amp; benefits</a>
+      <a href="#hiring">How hiring works</a>
+      <a href="#apply">Apply</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Careers · Field crews &amp; shop</p>
+      <h1>Work you can <em>walk back through</em> in ten years.</h1>
+      <p class="lede">Retaining walls, plantings, irrigation lines, stone terraces. Everything our crews build stays in the ground long after the truck pulls out. We hire people who care that it holds.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#roles">See open roles</a>
+        <a class="btn btn-ghost" href="#apply">Apply in 3 minutes</a>
+      </div>
+      <p class="hero-note">No resume required for crew roles. Spanish-speaking foremen on every crew.</p>
+    </div>
+
+    <dl class="hero-panel">
+      <p class="eyebrow">At a glance</p>
+      <div class="stat-row"><dt>Open positions</dt><dd>7</dd></div>
+      <div class="stat-row"><dt>Crew starting wage</dt><dd>$22/hr</dd></div>
+      <div class="stat-row"><dt>Paid weekly</dt><dd>Fridays</dd></div>
+      <div class="stat-row"><dt>Year-round crew share</dt><dd>78%</dd></div>
+      <div class="stat-row"><dt>Average crew tenure</dt><dd>6.4 yrs</dd></div>
+    </dl>
+  </div>
+
+  <div class="season">
+    <div class="season-head">
+      <h2>The year on a landscape crew</h2>
+      <p class="eyebrow">Bars show typical scheduled hours per week</p>
+    </div>
+    <div class="season-grid">
+      <div class="season-cell">
+        <span class="mo">MAR – MAY</span>
+        <strong>Spring open-up</strong>
+        <p>Cleanups, bed edging, mulch, pruning, irrigation start-ups and backflow tests.</p>
+        <div class="bar"><i style="transform:scaleX(1)"></i></div>
+        <span class="mo">48 hrs</span>
+      </div>
+      <div class="season-cell">
+        <span class="mo">JUN – AUG</span>
+        <strong>Build season</strong>
+        <p>Paver patios, seat walls, drainage, plant installs. Early starts, out by mid-afternoon.</p>
+        <div class="bar"><i style="transform:scaleX(.94)"></i></div>
+        <span class="mo">45 hrs</span>
+      </div>
+      <div class="season-cell">
+        <span class="mo">SEP – NOV</span>
+        <strong>Fall planting</strong>
+        <p>Best planting window of the year. Sod, lighting, leaf work, winterizing systems.</p>
+        <div class="bar"><i style="transform:scaleX(.88)"></i></div>
+        <span class="mo">42 hrs</span>
+      </div>
+      <div class="season-cell">
+        <span class="mo">DEC – FEB</span>
+        <strong>Snow &amp; shop</strong>
+        <p>On-call snow routes, equipment rebuilds, certifications, paid training weeks.</p>
+        <div class="bar"><i style="transform:scaleX(.66)"></i></div>
+        <span class="mo">32 hrs + call-outs</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="roles">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Open roles</p>
+        <h2>Seven positions, all hiring now</h2>
+      </div>
+      <p class="lede" style="font-size:.95rem">Every listed wage is the real starting range, reviewed at 90 days and again each March.</p>
+    </div>
+
+    <div class="roles">
+      <div class="role">
+        <div class="role-title">
+          <h3>Landscape Crew Member</h3>
+          <p>Planting, mulch, sod, hand-work. No experience needed. We train on every tool you touch.</p>
+        </div>
+        <div class="tags"><span class="tag year">Year-round</span><span class="tag">3 openings</span><span class="tag">Valid driver's license</span></div>
+        <div class="pay">$22–26/hr<small>Overtime after 40</small></div>
+      </div>
+
+      <div class="role">
+        <div class="role-title">
+          <h3>Hardscape Mason</h3>
+          <p>Segmental walls, natural stone, permeable pavers. ICPI certification paid for and expected.</p>
+        </div>
+        <div class="tags"><span class="tag year">Year-round</span><span class="tag">2 openings</span><span class="tag">2+ yrs hardscape</span></div>
+        <div class="pay">$28–36/hr<small>Tool allowance</small></div>
+      </div>
+
+      <div class="role">
+        <div class="role-title">
+          <h3>Irrigation Technician</h3>
+          <p>Start-ups, blow-outs, controller programming, leak diagnostics across roughly 300 systems.</p>
+        </div>
+        <div class="tags"><span class="tag year">Year-round</span><span class="tag">1 opening</span><span class="tag">Backflow cert. or will train</span></div>
+        <div class="pay">$26–34/hr<small>Take-home van</small></div>
+      </div>
+
+      <div class="role">
+        <div class="role-title">
+          <h3>Crew Foreman</h3>
+          <p>Run a three-person crew, read the plan set, own the punch list and the client conversation.</p>
+        </div>
+        <div class="tags"><span class="tag year">Year-round</span><span class="tag">1 opening</span><span class="tag">CDL Class B preferred</span></div>
+        <div class="pay">$32–42/hr<small>Quarterly job-margin bonus</small></div>
+      </div>
+
+      <div class="role">
+        <div class="role-title">
+          <h3>Equipment Operator / Driver</h3>
+          <p>Skid steer, mini-ex, tandem dump. Hauling material and running grade on build sites.</p>
+        </div>
+        <div class="tags"><span class="tag year">Year-round</span><span class="tag">1 opening</span><span class="tag">CDL Class B required</span></div>
+        <div class="pay">$30–38/hr<small>CDL renewal paid</small></div>
+      </div>
+
+      <div class="role">
+        <div class="role-title">
+          <h3>Seasonal Grounds Crew</h3>
+          <p>March through November, with a standing offer to move onto a year-round crew.</p>
+        </div>
+        <div class="tags"><span class="tag">Seasonal</span><span class="tag">Open until filled</span><span class="tag">18+</span></div>
+        <div class="pay">$20–24/hr<small>End-of-season bonus</small></div>
+      </div>
+
+      <div class="role">
+        <div class="role-title">
+          <h3>Snow Operator (winter)</h3>
+          <p>On-call plow and sidewalk routes, November to March. Stacks on top of a day job or a crew role.</p>
+        </div>
+        <div class="tags"><span class="tag">Winter only</span><span class="tag">4 openings</span><span class="tag">Night availability</span></div>
+        <div class="pay">$28/hr + call pay<small>$75 per activation</small></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="benefits" id="benefits">
+  <div class="wrap" style="padding-block:clamp(48px,8vw,84px)">
+    <p class="eyebrow">Pay &amp; benefits</p>
+    <h2>What the job actually comes with</h2>
+    <p class="lede" style="margin-top:12px">Landscaping has a reputation for cash-under-the-table and no-shows in January. None of that here.</p>
+
+    <div class="ben-grid">
+      <div class="ben"><span class="num">01 / PAY</span><h3>Weekly pay, every Friday</h3><p>Direct deposit, overtime after 40, and a written wage review at 90 days and each March.</p></div>
+      <div class="ben"><span class="num">02 / WINTER</span><h3>Guaranteed winter hours</h3><p>Year-round crew get a minimum of 30 paid hours a week from December through February, snow or no snow.</p></div>
+      <div class="ben"><span class="num">03 / HEALTH</span><h3>Health, dental, vision</h3><p>Company covers 75% of the employee premium. Coverage starts the first of the month after 60 days.</p></div>
+      <div class="ben"><span class="num">04 / RETIREMENT</span><h3>401(k) with 4% match</h3><p>Fully vested at two years. Enrollment help from a real person, not just a packet.</p></div>
+      <div class="ben"><span class="num">05 / TRAINING</span><h3>Certifications on the clock</h3><p>ICPI, backflow, pesticide applicator, CDL. We pay the course, the exam, and your hours.</p></div>
+      <div class="ben"><span class="num">06 / GEAR</span><h3>Boots, gear, and a $250 tool credit</h3><p>Annual boot stipend, company-issued rain and cold-weather gear, hearing and eye protection stocked on every truck.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="hiring">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">How hiring works</p>
+        <h2>Four steps, about a week</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">STEP 1</span><h3>Send the short form</h3><p>Name, phone, what you have done before. Three minutes, no resume needed for crew roles.</p></div>
+      <div class="step"><span class="n">STEP 2</span><h3>Phone call within 2 days</h3><p>Fifteen minutes with the hiring foreman. Wage, schedule, and start date on that first call.</p></div>
+      <div class="step"><span class="n">STEP 3</span><h3>Ride along, paid</h3><p>Half a day on a real crew at full hourly rate. You see the work, the crew sees you.</p></div>
+      <div class="step"><span class="n">STEP 4</span><h3>Offer and start</h3><p>Written offer the same week. Most new hires start the following Monday.</p></div>
+    </div>
+
+    <div style="margin-top:44px">
+      <details open>
+        <summary>Do I need experience to get hired?</summary>
+        <p>Not for crew member or seasonal grounds roles. About a third of our current foremen started with no landscape experience at all. What we need is reliable transportation, a willingness to work outside in the weather, and showing up when you said you would.</p>
+      </details>
+      <details>
+        <summary>What time does the day start and end?</summary>
+        <p>Shop at 6:30 a.m., trucks roll at 7:00. Most crews are back at the shop between 3:30 and 4:30. In July we start earlier to stay ahead of the heat.</p>
+      </details>
+      <details>
+        <summary>Is the work year-round or seasonal?</summary>
+        <p>Both, and you choose. Year-round roles carry a guaranteed 30-hour winter minimum plus snow call-outs. Seasonal runs March through November with an end-of-season bonus and a standing offer to convert.</p>
+      </details>
+      <details>
+        <summary>Se habla español?</summary>
+        <p>Sí. Cada cuadrilla tiene un capataz bilingüe, y las juntas de seguridad, la capacitación y los documentos de nómina están disponibles en español e inglés.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="apply">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Apply</p>
+        <h2>Start with a phone number</h2>
+      </div>
+    </div>
+
+    <div class="apply">
+      <form id="apply-form">
+        <div class="field-row">
+          <label for="f-name">Name<input id="f-name" name="name" type="text" autocomplete="name" placeholder="First and last"></label>
+          <label for="f-phone">Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="(000) 000-0000"></label>
+        </div>
+        <label for="f-role">Role you want
+          <select id="f-role" name="role">
+            <option>Landscape Crew Member</option>
+            <option>Hardscape Mason</option>
+            <option>Irrigation Technician</option>
+            <option>Crew Foreman</option>
+            <option>Equipment Operator / Driver</option>
+            <option>Seasonal Grounds Crew</option>
+            <option>Snow Operator (winter)</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+        <label for="f-exp">Anything you have run before
+          <textarea id="f-exp" name="experience" placeholder="Skid steer, plate compactor, chainsaw, framing, roofing, warehouse. Anything counts."></textarea>
+        </label>
+        <label for="f-when">Earliest start<input id="f-when" name="start" type="text" placeholder="Next Monday"></label>
+        <button class="btn btn-primary" type="submit" style="align-self:flex-start">Send application</button>
+        <p class="hero-note" id="form-status" role="status">We call every applicant back, hired or not.</p>
+      </form>
+
+      <div>
+        <p class="eyebrow">Or skip the form</p>
+        <div class="contact-line"><span>Call or text the hiring line</span><a href="tel:+10000000000">(000) 000-0000</a></div>
+        <div class="contact-line"><span>Email</span><a href="mailto:jobs@example.com">jobs@example.com</a></div>
+        <div class="contact-line"><span>Walk in, Mon–Fri 7 a.m. – 4 p.m.</span><strong>Shop address, City, ST</strong></div>
+        <div class="note">Placeholder content. Phone, email, address, wage ranges, headcounts, and benefit percentages are stand-ins for the real Townsend figures and should be replaced before this page goes live.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Townsend Landscape · Careers</div>
+    <div>Equal opportunity employer · E-Verify participant</div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById("apply-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = document.getElementById("f-name").value.trim();
+    var phone = document.getElementById("f-phone").value.trim();
+    var status = document.getElementById("form-status");
+    if (!name || !phone) {
+      status.textContent = "Add your name and a phone number so we can call you back.";
+      return;
+    }
+    status.textContent = "Sent. A hiring foreman will call " + phone + " within two business days.";
+    e.target.querySelector("button[type=submit]").textContent = "Application sent";
+  });
+</script>
