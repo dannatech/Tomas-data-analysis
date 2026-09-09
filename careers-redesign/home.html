@@ -1,4 +1,4 @@
-<title>Townsend Landscape</title>
+<title>J.W. Townsend Landscapes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -16,6 +16,8 @@
     --line:#CFD6C9;
     --evergreen:#1F4B36;
     --evergreen-deep:#122B20;
+    --crimson:#8E1B34;
+    --crimson-deep:#6E1428;
     --marigold:#C98A12;
     --marigold-ink:#7A5206;
     --ok:#3F7D53;
@@ -52,19 +54,19 @@
   .navlinks{display:flex;flex-wrap:wrap;gap:22px;font-size:.9rem;align-items:center}
   .navlinks a{text-decoration:none;color:var(--ink-soft)}
   .navlinks a:hover{color:var(--ink)}
-  .navlinks a.hire{color:var(--evergreen);font-weight:600}
+  .navlinks a.hire{color:var(--crimson);font-weight:600}
 
   .btn{display:inline-flex;align-items:center;gap:10px;font-size:.95rem;font-weight:600;padding:13px 22px;border-radius:2px;border:1px solid transparent;text-decoration:none;cursor:pointer;transition:transform .15s ease,background .15s ease}
-  .btn-primary{background:var(--evergreen);color:#FFFFFF}
-  .btn-primary:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--crimson);color:#FFFFFF}
+  .btn-primary:hover{background:var(--crimson-deep);transform:translateY(-1px)}
   .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
   .btn-ghost:hover{background:var(--surface-sunk)}
-  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--marigold);outline-offset:3px}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--crimson);outline-offset:3px}
 
   /* hero */
   .hero{padding-block:clamp(44px,7vw,80px) 0;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end}
   .hero-copy{display:flex;flex-direction:column;gap:22px}
-  .hero h1 em{font-style:normal;color:var(--evergreen)}
+  .hero h1 em{font-style:normal;color:var(--crimson)}
   .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
   .hero-note{font-size:.85rem;color:var(--ink-soft)}
   .plot{background:var(--veil);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow)}
@@ -81,17 +83,17 @@
   .svc{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
   .svc article{background:var(--veil);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
   .svc h3{display:flex;align-items:baseline;gap:10px}
-  .svc .k{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--marigold-ink);letter-spacing:.1em}
+  .svc .k{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--crimson);letter-spacing:.1em}
   .svc p{font-size:.92rem;color:var(--ink-soft)}
   .svc ul{margin:6px 0 0;padding-left:18px;font-size:.86rem;color:var(--ink-soft);display:grid;gap:3px}
 
   /* process */
   .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
-  .phase{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:3px solid var(--evergreen)}
+  .phase{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:3px solid var(--crimson)}
   .phase .n{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.12em;color:var(--ink-soft)}
   .phase h3{font-size:1.02rem}
   .phase p{font-size:.87rem;color:var(--ink-soft)}
-  .phase .dur{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--marigold-ink)}
+  .phase .dur{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--crimson)}
 
   /* projects */
   .work{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -107,6 +109,16 @@
   blockquote p{font-family:Fraunces,serif;font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.35}
   blockquote cite{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.08em;color:var(--ink-soft)}
 
+
+  /* archive band */
+  .archive{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface-sunk)}
+  .archive-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+  .photo-well{border:1px solid var(--line);background:var(--ground);padding:10px}
+  .photo-well svg{display:block;width:100%;height:auto}
+  .photo-well img{display:block;width:100%;height:auto}
+  .photo-cap{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;color:var(--ink-soft);margin-top:10px}
+  @media (max-width:920px){.archive-grid{grid-template-columns:1fr}}
+
   /* area + cta */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
   .towns{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
@@ -115,7 +127,7 @@
   .contact-line span{font-size:.8rem;color:var(--ink-soft)}
   .contact-line a,.contact-line strong{font-family:"IBM Plex Mono",monospace;font-size:.98rem;text-decoration:none}
   .cta{border:1px solid var(--line);background:var(--veil);padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:18px;align-items:flex-start}
-  .note{margin-top:20px;padding:14px 16px;border-left:3px solid var(--marigold);background:var(--surface-sunk);font-size:.85rem;color:var(--ink-soft)}
+  .note{margin-top:20px;padding:14px 16px;border-left:3px solid var(--crimson);background:var(--surface-sunk);font-size:.85rem;color:var(--ink-soft)}
   footer{border-top:1px solid var(--line);padding-block:28px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:.85rem;color:var(--ink-soft)}
 
   @media (max-width:920px){
@@ -156,26 +168,26 @@
 
 <div class="wrap">
   <header class="topbar">
-    <div class="brand">Townsend Landscape <span>Est. 1984</span></div>
+    <div class="brand">J.&#8202;W. Townsend <span>Landscapes · Since 1983</span></div>
     <nav class="navlinks">
+      <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#work">Recent work</a>
-      <a href="#area">Service area</a>
-      <a class="hire" href="#estimate">Request an estimate</a>
+      <a href="#work">Galleries</a>
+      <a href="#careers">Careers</a>
+      <a class="hire" href="#estimate">Connect</a>
     </nav>
   </header>
 
   <div class="hero">
     <div class="hero-copy">
-      <p class="eyebrow">Design · Build · Maintain</p>
-      <h1>A yard that gets <em>better</em> every year.</h1>
-      <p class="lede">We design and build outdoor spaces, then stay on to keep them growing. Same crews, same foremen, from the first sketch through the tenth spring.</p>
+      <p class="eyebrow">Charlottesville, Virginia · Serving Virginia since 1983</p>
+      <h1>Gardens that make people <em>smile</em>, decade after decade.</h1>
+      <p class="lede">Over forty years of planting and maintaining beautiful gardens in Charlottesville and across Virginia. We design it, we build it, and we come back to care for it.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#estimate">Request an estimate</a>
         <a class="btn btn-ghost" href="#work">See recent work</a>
       </div>
-      <p class="hero-note">Estimates are free and scheduled within a week. Design-build projects book 6 to 10 weeks out.</p>
+      <p class="hero-note">Design-build projects typically book 6 to 10 weeks out.</p>
     </div>
 
     <figure class="plot" style="margin:0">
@@ -212,10 +224,10 @@
   </div>
 
   <div class="proof">
-    <div><b>41 yrs</b><span>Building yards in this county</span></div>
-    <div><b>1,900+</b><span>Projects completed</span></div>
+    <div><b>1983</b><span>Serving Virginia since</span></div>
+    <div><b>1,900+</b><span>Virginia gardens planted</span></div>
     <div><b>6.4 yrs</b><span>Average crew tenure</span></div>
-    <div><b>3 yr</b><span>Warranty on hardscape and plantings</span></div>
+    <div><b>Cville</b><span>Home base, work across Virginia</span></div>
   </div>
 
   <section id="services">
@@ -224,7 +236,7 @@
         <p class="eyebrow">Services</p>
         <h2>Four things, done properly</h2>
       </div>
-      <p class="lede" style="font-size:.95rem">We turn down work that falls outside these. It is the reason the crews are good at what stays.</p>
+      <p class="lede" style="font-size:.95rem">We turn down work outside these four. It is why the crews are good at what stays.</p>
     </div>
 
     <div class="svc">
@@ -257,7 +269,6 @@
         <p class="eyebrow">Process</p>
         <h2>From first call to first mow</h2>
       </div>
-      <p class="lede" style="font-size:.95rem">Durations are typical for a full design-build project.</p>
     </div>
     <div class="flow">
       <div class="phase"><span class="n">PHASE 1</span><h3>Site visit</h3><p>We walk the property, take measurements, and talk about how you actually use the yard.</p><span class="dur">Week 1 · free</span></div>
@@ -341,24 +352,18 @@
       </article>
     </div>
 
-    <blockquote style="margin-top:44px">
-      <p>“They came back the next spring to check the plantings without being asked. Two of the hydrangeas had struggled and they replaced them.”</p>
-      <cite>— Homeowner, sample testimonial</cite>
-    </blockquote>
   </section>
 
   <section id="area">
     <div class="split">
       <div>
         <p class="eyebrow">Service area</p>
-        <h2>Where our trucks go</h2>
-        <p class="lede" style="margin-top:12px">Design-build within about 25 miles of the shop. Maintenance routes are tighter so crews stay on schedule.</p>
+        <h2>Charlottesville and across Virginia</h2>
+        <p class="lede" style="margin-top:12px">Design and build across Virginia, with maintenance routes concentrated around Charlottesville and Albemarle County so crews stay on schedule.</p>
         <div class="towns">
-          <span class="town">Town A</span><span class="town">Town B</span><span class="town">Town C</span>
-          <span class="town">Town D</span><span class="town">Town E</span><span class="town">Town F</span>
-          <span class="town">Town G</span><span class="town">Town H</span>
+          <span class="town">Charlottesville</span><span class="town">Albemarle County</span><span class="town">Crozet</span><span class="town">Ivy</span><span class="town">Keswick</span><span class="town">Earlysville</span><span class="town">Free Union</span><span class="town">Scottsville</span><span class="town">Zion Crossroads</span><span class="town">Waynesboro</span>
         </div>
-        <div class="note">Placeholder content. Town names, phone, email, address, warranty terms, and project counts are stand-ins for the real Townsend details and should be replaced before this page goes live.</div>
+        <div class="note">Brand, founding year and location are from J.W. Townsend Landscapes. Phone, email, address, project counts and the specific towns listed are stand-ins and should be replaced with the real details before this page goes live.</div>
       </div>
 
       <div id="estimate" class="cta">
@@ -374,9 +379,78 @@
       </div>
     </div>
   </section>
+</div>
+
+<div class="archive">
+  <div class="wrap" style="padding-block:clamp(48px,8vw,84px)">
+    <div class="archive-grid">
+      <figure class="photo-well" style="margin:0">
+        <!-- Replace this drawing with the archival photograph:
+             <img src="jwt-archive-seedbed.jpg" alt="A crew member preparing a seedbed by tractor in front of a columned estate under restoration."> -->
+        <svg viewBox="0 0 620 330" role="img" aria-label="Line drawing of a columned Virginia estate under scaffolding, with a tractor working a freshly harrowed seedbed in front of it.">
+          <rect width="620" height="330" fill="#FFFFFF"></rect>
+          <g stroke="#16211A" stroke-width="1.3" fill="none">
+            <path d="M232 176V96h156v80"></path>
+            <path d="M226 96h168l-84 -46z"></path>
+            <path d="M310 74a14 14 0 0 1 14 14h-28a14 14 0 0 1 14 -14z"></path>
+            <path d="M252 104v72M282 104v72M338 104v72M368 104v72"></path>
+            <path d="M244 176h132M250 186h120M256 196h108"></path>
+            <path d="M96 176h136V118H96zM388 176h136V118H388z"></path>
+            <path d="M96 118l40 -26h96M524 118l-40 -26h-96"></path>
+          </g>
+          <g stroke="#8E1B34" stroke-width=".9" fill="none" opacity=".75">
+            <path d="M96 118v58M136 92v84M176 92v84M216 92v84M484 92v84M524 92v84M444 92v84M404 92v84"></path>
+            <path d="M96 136h136M96 156h136M388 136h136M388 156h136"></path>
+          </g>
+          <g stroke="#4C5A50" stroke-width="1" fill="none" opacity=".75">
+            <path d="M8 214q150 -22 604 -8M8 236q150 -22 604 -8M8 258q150 -22 604 -8M8 280q150 -22 604 -8M8 302q150 -22 604 -8"></path>
+          </g>
+          <g stroke="#16211A" stroke-width="1.4" fill="#FFFFFF">
+            <rect x="252" y="196" width="66" height="30"></rect>
+            <circle cx="262" cy="234" r="16"></circle>
+            <circle cx="312" cy="230" r="11"></circle>
+            <path d="M244 186h18v10h-18z"></path>
+          </g>
+          <g stroke="#16211A" stroke-width="1.3" fill="none">
+            <path d="M284 196v-16M276 180h16"></path>
+            <circle cx="284" cy="172" r="8"></circle>
+          </g>
+        </svg>
+        <figcaption class="photo-cap">Placeholder drawing · drop the archival photograph in here</figcaption>
+      </figure>
+
+      <div>
+        <p class="eyebrow">From the archive</p>
+        <h2>Four decades of Virginia ground</h2>
+        <p class="lede" style="margin-top:14px">The work started with seedbeds, hand-graded and harrowed, on properties people still visit today. Same standard now: prepare the ground properly, plant what belongs there, and come back to look after it.</p>
+        <p style="font-size:.92rem;color:var(--ink-soft);margin-top:16px">Historic estates, university grounds, and family gardens across the Commonwealth.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="about">
+    <div class="split">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>Our original mission, still the standard</h2>
+        <blockquote style="margin-top:18px">
+          <p>“Our goal is to satisfy our customers so completely with the quality of our work, our commitment to service, and our professionalism, that they will deliberately seek us out again.”</p>
+          <cite>— J.W. Townsend Landscapes, founding mission statement</cite>
+        </blockquote>
+      </div>
+      <div id="careers" class="cta">
+        <p class="eyebrow">Careers</p>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem)">We are hiring year-round</h2>
+        <p style="font-size:.95rem;color:var(--ink-soft)">Crew, hardscape, irrigation and foreman roles across the Charlottesville area. Wages are posted, and no resume is needed for crew positions.</p>
+        <a class="btn btn-ghost" href="#careers">See open roles</a>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <div>Townsend Landscape · Design, build, maintain</div>
-    <div><a href="#estimate">Estimates</a> · Hiring year-round — see careers</div>
+    <div>J.W. Townsend Landscapes · Charlottesville, Virginia · Since 1983</div>
+    <div><a href="#estimate">Connect</a> · <a href="#careers">Careers</a></div>
   </footer>
 </div>
