@@ -21,48 +21,13 @@
     --ok:#3F7D53;
     --shadow:0 1px 0 rgba(18,43,32,.06);
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --ground:#101812;
-      --surface:#17211B;
-      --surface-sunk:#1D2921;
-      --ink:#E9EEE7;
-      --ink-soft:#A3B1A6;
-      --line:#2C3B31;
-      --evergreen:#7FB79A;
-      --evergreen-deep:#0B140F;
-      --marigold:#E8B44A;
-      --marigold-ink:#F0CB84;
-      --ok:#7FB79A;
-      --shadow:0 1px 0 rgba(0,0,0,.35);
-      --veil:rgba(16,24,18,.78);
-      --imprint:#7FB79A;
-      --imprint-opacity:.10;
-    }
-  }
-  :root[data-theme="dark"]{
-    --ground:#101812;
-    --surface:#17211B;
-    --surface-sunk:#1D2921;
-    --ink:#E9EEE7;
-    --ink-soft:#A3B1A6;
-    --line:#2C3B31;
-    --evergreen:#7FB79A;
-    --evergreen-deep:#0B140F;
-    --marigold:#E8B44A;
-    --marigold-ink:#F0CB84;
-    --ok:#7FB79A;
-    --shadow:0 1px 0 rgba(0,0,0,.35);
-    --veil:rgba(16,24,18,.78);
-    --imprint:#7FB79A;
-    --imprint-opacity:.10;
-  }
 
   .grove{
     position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;
     color:var(--imprint);opacity:var(--imprint-opacity);
   }
   *{box-sizing:border-box}
+  :root{color-scheme:light}
   body{
     background:var(--ground);
     color:var(--ink);
@@ -129,7 +94,6 @@
   .season-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
   .season-cell{background:var(--veil);padding:16px 14px;display:flex;flex-direction:column;gap:6px}
   .season-cell .mo{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em;color:var(--marigold-ink)}
-  :root[data-theme="dark"] .season-cell .mo{color:var(--marigold)}
   .season-cell strong{font-family:Fraunces,serif;font-size:1.02rem;font-weight:600}
   .season-cell p{font-size:.85rem;color:var(--ink-soft)}
   .bar{height:4px;background:var(--surface-sunk);position:relative;overflow:hidden}
@@ -163,7 +127,6 @@
   .ben h3{margin-bottom:6px}
   .ben p{font-size:.9rem;color:var(--ink-soft)}
   .ben .num{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--marigold-ink);letter-spacing:.1em;display:block;margin-bottom:10px}
-  :root[data-theme="dark"] .ben .num{color:var(--marigold)}
 
   /* ---- steps ---- */
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step}
