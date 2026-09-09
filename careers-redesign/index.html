@@ -5,9 +5,12 @@
 
 <style>
   :root{
-    --ground:#F1F3EE;
+    --ground:#FFFFFF;
     --surface:#FFFFFF;
-    --surface-sunk:#E7EBE3;
+    --surface-sunk:#F1F4EF;
+    --veil:rgba(255,255,255,.78);
+    --imprint:#1F4B36;
+    --imprint-opacity:.085;
     --ink:#16211A;
     --ink-soft:#4C5A50;
     --line:#CFD6C9;
@@ -32,6 +35,9 @@
       --marigold-ink:#F0CB84;
       --ok:#7FB79A;
       --shadow:0 1px 0 rgba(0,0,0,.35);
+      --veil:rgba(16,24,18,.78);
+      --imprint:#7FB79A;
+      --imprint-opacity:.10;
     }
   }
   :root[data-theme="dark"]{
@@ -47,8 +53,15 @@
     --marigold-ink:#F0CB84;
     --ok:#7FB79A;
     --shadow:0 1px 0 rgba(0,0,0,.35);
+    --veil:rgba(16,24,18,.78);
+    --imprint:#7FB79A;
+    --imprint-opacity:.10;
   }
 
+  .grove{
+    position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;
+    color:var(--imprint);opacity:var(--imprint-opacity);
+  }
   *{box-sizing:border-box}
   body{
     background:var(--ground);
@@ -102,7 +115,7 @@
   .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
   .hero-note{font-size:.85rem;color:var(--ink-soft)}
   .hero-panel{
-    background:var(--surface);border:1px solid var(--line);border-radius:2px;
+    background:var(--veil);border:1px solid var(--line);border-radius:2px;
     padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow);
   }
   .stat-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-block:9px;border-bottom:1px dotted var(--line)}
@@ -114,7 +127,7 @@
   .season{margin-top:clamp(48px,8vw,84px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:26px}
   .season-head{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;justify-content:space-between;margin-bottom:18px}
   .season-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
-  .season-cell{background:var(--ground);padding:16px 14px;display:flex;flex-direction:column;gap:6px}
+  .season-cell{background:var(--veil);padding:16px 14px;display:flex;flex-direction:column;gap:6px}
   .season-cell .mo{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em;color:var(--marigold-ink)}
   :root[data-theme="dark"] .season-cell .mo{color:var(--marigold)}
   .season-cell strong{font-family:Fraunces,serif;font-size:1.02rem;font-weight:600}
@@ -144,14 +157,13 @@
   .pay small{display:block;font-family:Archivo,sans-serif;font-size:.78rem;color:var(--ink-soft);letter-spacing:0}
 
   /* ---- benefits ---- */
-  .benefits{background:var(--evergreen-deep);color:#E9EEE7}
-  .benefits .eyebrow{color:#9DB8A8}
-  .benefits h2{color:#F1F3EE}
-  .benefits .lede{color:#B9C8BD}
+  .benefits{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 32px;margin-top:32px}
-  .ben h3{color:#F1F3EE;margin-bottom:6px}
-  .ben p{font-size:.9rem;color:#B9C8BD}
-  .ben .num{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:#E8B44A;letter-spacing:.1em;display:block;margin-bottom:10px}
+  .ben{padding-left:16px;border-left:1px solid var(--line)}
+  .ben h3{margin-bottom:6px}
+  .ben p{font-size:.9rem;color:var(--ink-soft)}
+  .ben .num{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--marigold-ink);letter-spacing:.1em;display:block;margin-bottom:10px}
+  :root[data-theme="dark"] .ben .num{color:var(--marigold)}
 
   /* ---- steps ---- */
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step}
@@ -171,7 +183,7 @@
   details p{margin-top:10px;font-size:.94rem;color:var(--ink-soft);max-width:68ch}
 
   /* ---- apply ---- */
-  .apply{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .apply{background:var(--veil);border:1px solid var(--line);border-radius:2px;padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:32px}
   form{display:flex;flex-direction:column;gap:14px}
   label{display:flex;flex-direction:column;gap:6px;font-size:.85rem;color:var(--ink-soft)}
   input,select,textarea{
@@ -208,6 +220,30 @@
     *{animation:none!important;transition:none!important}
   }
 </style>
+
+<svg class="grove" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="grove-tile" width="300" height="300" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <!-- broadleaf -->
+        <path d="M62 132v46"/>
+        <path d="M62 152l-13-13M62 162l14-14"/>
+        <circle cx="62" cy="106" r="27"/>
+        <circle cx="43" cy="120" r="16"/>
+        <circle cx="81" cy="120" r="16"/>
+        <!-- conifer -->
+        <path d="M205 96v52"/>
+        <path d="M205 44l-22 34h44zM205 66l-30 40h60zM205 90l-37 44h74z"/>
+        <!-- young sapling -->
+        <path d="M148 262v-34"/>
+        <path d="M148 240c-12 0-18-7-19-18 12-1 19 6 19 18zM148 248c12 0 18-7 19-18-12-1-19 6-19 18z"/>
+        <!-- shrub mound -->
+        <path d="M258 268c0-16 13-28 29-28s29 12 29 28z"/>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grove-tile)"></rect>
+</svg>
 
 <div class="wrap">
   <header class="topbar">
