@@ -1,0 +1,382 @@
+<title>Townsend Landscape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root{
+    --ground:#FFFFFF;
+    --surface:#FFFFFF;
+    --surface-sunk:#F1F4EF;
+    --veil:rgba(255,255,255,.78);
+    --imprint:#1F4B36;
+    --imprint-opacity:.085;
+    --ink:#16211A;
+    --ink-soft:#4C5A50;
+    --line:#CFD6C9;
+    --evergreen:#1F4B36;
+    --evergreen-deep:#122B20;
+    --marigold:#C98A12;
+    --marigold-ink:#7A5206;
+    --ok:#3F7D53;
+    --shadow:0 1px 0 rgba(18,43,32,.06);
+    color-scheme:light;
+  }
+
+  .grove{
+    position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;
+    color:var(--imprint);opacity:var(--imprint-opacity);
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:Archivo,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:24px}
+  h1,h2,h3{font-family:Fraunces,Georgia,"Times New Roman",serif;font-weight:600;text-wrap:balance;margin:0;line-height:1.08}
+  h1{font-size:clamp(2.6rem,7vw,4.8rem);letter-spacing:-.015em}
+  h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+  h3{font-size:1.15rem;line-height:1.25}
+  p{margin:0}
+  a{color:inherit}
+  .eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+  .lede{font-size:1.15rem;color:var(--ink-soft);max-width:60ch}
+  section{padding-block:clamp(48px,8vw,84px)}
+  .sec-head{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:end;margin-bottom:28px}
+
+  .topbar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-block:20px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:baseline;gap:10px;font-family:Fraunces,serif;font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+  .brand span{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:400}
+  .navlinks{display:flex;flex-wrap:wrap;gap:22px;font-size:.9rem;align-items:center}
+  .navlinks a{text-decoration:none;color:var(--ink-soft)}
+  .navlinks a:hover{color:var(--ink)}
+  .navlinks a.hire{color:var(--evergreen);font-weight:600}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;font-size:.95rem;font-weight:600;padding:13px 22px;border-radius:2px;border:1px solid transparent;text-decoration:none;cursor:pointer;transition:transform .15s ease,background .15s ease}
+  .btn-primary{background:var(--evergreen);color:#FFFFFF}
+  .btn-primary:hover{transform:translateY(-1px)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+  .btn-ghost:hover{background:var(--surface-sunk)}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--marigold);outline-offset:3px}
+
+  /* hero */
+  .hero{padding-block:clamp(44px,7vw,80px) 0;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end}
+  .hero-copy{display:flex;flex-direction:column;gap:22px}
+  .hero h1 em{font-style:normal;color:var(--evergreen)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+  .hero-note{font-size:.85rem;color:var(--ink-soft)}
+  .plot{background:var(--veil);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow)}
+  .plot svg{width:100%;height:auto;display:block}
+  .plot-cap{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.08em;color:var(--ink-soft)}
+
+  /* proof strip */
+  .proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:clamp(44px,7vw,72px)}
+  .proof div{background:var(--ground);padding:20px 18px;display:flex;flex-direction:column;gap:4px}
+  .proof b{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:1.5rem;font-weight:500;letter-spacing:-.02em}
+  .proof span{font-size:.85rem;color:var(--ink-soft)}
+
+  /* services */
+  .svc{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .svc article{background:var(--veil);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+  .svc h3{display:flex;align-items:baseline;gap:10px}
+  .svc .k{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--marigold-ink);letter-spacing:.1em}
+  .svc p{font-size:.92rem;color:var(--ink-soft)}
+  .svc ul{margin:6px 0 0;padding-left:18px;font-size:.86rem;color:var(--ink-soft);display:grid;gap:3px}
+
+  /* process */
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+  .phase{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:3px solid var(--evergreen)}
+  .phase .n{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.12em;color:var(--ink-soft)}
+  .phase h3{font-size:1.02rem}
+  .phase p{font-size:.87rem;color:var(--ink-soft)}
+  .phase .dur{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--marigold-ink)}
+
+  /* projects */
+  .work{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .job{border:1px solid var(--line);background:var(--veil);display:flex;flex-direction:column}
+  .job .thumb{border-bottom:1px solid var(--line);background:var(--surface-sunk)}
+  .job .thumb svg{display:block;width:100%;height:auto}
+  .job .body{padding:18px;display:flex;flex-direction:column;gap:8px}
+  .job .meta{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.08em;color:var(--ink-soft)}
+  .job p{font-size:.88rem;color:var(--ink-soft)}
+
+  /* quote */
+  blockquote{margin:0;display:grid;gap:16px;max-width:56ch}
+  blockquote p{font-family:Fraunces,serif;font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.35}
+  blockquote cite{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.08em;color:var(--ink-soft)}
+
+  /* area + cta */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+  .towns{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .town{font-family:"IBM Plex Mono",monospace;font-size:.72rem;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--ink-soft)}
+  .contact-line{display:flex;flex-direction:column;gap:4px;padding-block:12px;border-bottom:1px dotted var(--line)}
+  .contact-line span{font-size:.8rem;color:var(--ink-soft)}
+  .contact-line a,.contact-line strong{font-family:"IBM Plex Mono",monospace;font-size:.98rem;text-decoration:none}
+  .cta{border:1px solid var(--line);background:var(--veil);padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+  .note{margin-top:20px;padding:14px 16px;border-left:3px solid var(--marigold);background:var(--surface-sunk);font-size:.85rem;color:var(--ink-soft)}
+  footer{border-top:1px solid var(--line);padding-block:28px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:.85rem;color:var(--ink-soft)}
+
+  @media (max-width:920px){
+    .hero{grid-template-columns:1fr}
+    .proof{grid-template-columns:repeat(2,1fr)}
+    .svc{grid-template-columns:1fr}
+    .flow{grid-template-columns:repeat(2,1fr)}
+    .work{grid-template-columns:1fr 1fr}
+    .split{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    .proof{grid-template-columns:1fr}
+    .flow{grid-template-columns:1fr}
+    .work{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<svg class="grove" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="grove-tile" width="300" height="300" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M62 132v46"></path>
+        <path d="M62 152l-13-13M62 162l14-14"></path>
+        <circle cx="62" cy="106" r="27"></circle>
+        <circle cx="43" cy="120" r="16"></circle>
+        <circle cx="81" cy="120" r="16"></circle>
+        <path d="M205 96v52"></path>
+        <path d="M205 44l-22 34h44zM205 66l-30 40h60zM205 90l-37 44h74z"></path>
+        <path d="M148 262v-34"></path>
+        <path d="M148 240c-12 0-18-7-19-18 12-1 19 6 19 18zM148 248c12 0 18-7 19-18-12-1-19 6-19 18z"></path>
+        <path d="M258 268c0-16 13-28 29-28s29 12 29 28z"></path>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grove-tile)"></rect>
+</svg>
+
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand">Townsend Landscape <span>Est. 1984</span></div>
+    <nav class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#work">Recent work</a>
+      <a href="#area">Service area</a>
+      <a class="hire" href="#estimate">Request an estimate</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Design · Build · Maintain</p>
+      <h1>A yard that gets <em>better</em> every year.</h1>
+      <p class="lede">We design and build outdoor spaces, then stay on to keep them growing. Same crews, same foremen, from the first sketch through the tenth spring.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#estimate">Request an estimate</a>
+        <a class="btn btn-ghost" href="#work">See recent work</a>
+      </div>
+      <p class="hero-note">Estimates are free and scheduled within a week. Design-build projects book 6 to 10 weeks out.</p>
+    </div>
+
+    <figure class="plot" style="margin:0">
+      <p class="eyebrow">Typical plan sheet</p>
+      <svg viewBox="0 0 360 260" role="img" aria-label="Simplified site plan showing a house, patio, planting beds, and lawn.">
+        <rect x="0" y="0" width="360" height="260" fill="none"></rect>
+        <g stroke="#CFD6C9" stroke-width="1" fill="none">
+          <path d="M0 30H360M0 70H360M0 110H360M0 150H360M0 190H360M0 230H360"></path>
+          <path d="M30 0V260M70 0V260M110 0V260M150 0V260M190 0V260M230 0V260M270 0V260M310 0V260"></path>
+        </g>
+        <rect x="26" y="26" width="120" height="86" fill="#F1F4EF" stroke="#16211A" stroke-width="1.6"></rect>
+        <text x="34" y="56" font-family="IBM Plex Mono, monospace" font-size="11" fill="#4C5A50">HOUSE</text>
+        <path d="M146 112h96v58h-96z" fill="none" stroke="#1F4B36" stroke-width="1.6"></path>
+        <g stroke="#1F4B36" stroke-width=".8" opacity=".55">
+          <path d="M146 128h96M146 144h96M146 160h96M170 112v58M194 112v58M218 112v58"></path>
+        </g>
+        <text x="152" y="126" font-family="IBM Plex Mono, monospace" font-size="10" fill="#1F4B36">PATIO 16'x10'</text>
+        <path d="M26 124q54 -14 108 6" fill="none" stroke="#C98A12" stroke-width="1.8" stroke-dasharray="6 5"></path>
+        <text x="26" y="146" font-family="IBM Plex Mono, monospace" font-size="10" fill="#7A5206">BED — 3" hardwood mulch</text>
+        <g fill="none" stroke="#1F4B36" stroke-width="1.4">
+          <circle cx="286" cy="60" r="24"></circle><path d="M286 84v28"></path>
+          <circle cx="322" cy="118" r="15"></circle><path d="M322 133v18"></path>
+          <circle cx="60" cy="188" r="17"></circle><path d="M60 205v20"></path>
+          <circle cx="104" cy="206" r="12"></circle><path d="M104 218v14"></path>
+        </g>
+        <text x="262" y="106" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4C5A50">EXIST. MAPLE</text>
+        <path d="M254 176h96" stroke="#16211A" stroke-width="1.2"></path>
+        <path d="M254 172v8M350 172v8" stroke="#16211A" stroke-width="1.2"></path>
+        <text x="272" y="194" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4C5A50">24'-0"</text>
+        <text x="26" y="248" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4C5A50">LAWN — fescue blend, 4,200 sq ft</text>
+      </svg>
+      <p class="plot-cap">Every project starts on paper. You approve the plan before we dig.</p>
+    </figure>
+  </div>
+
+  <div class="proof">
+    <div><b>41 yrs</b><span>Building yards in this county</span></div>
+    <div><b>1,900+</b><span>Projects completed</span></div>
+    <div><b>6.4 yrs</b><span>Average crew tenure</span></div>
+    <div><b>3 yr</b><span>Warranty on hardscape and plantings</span></div>
+  </div>
+
+  <section id="services">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Services</p>
+        <h2>Four things, done properly</h2>
+      </div>
+      <p class="lede" style="font-size:.95rem">We turn down work that falls outside these. It is the reason the crews are good at what stays.</p>
+    </div>
+
+    <div class="svc">
+      <article>
+        <h3><span class="k">01</span> Landscape design</h3>
+        <p>A measured site plan, a plant list with mature sizes, and a phased budget you can build over one season or three.</p>
+        <ul><li>Site survey and grade check</li><li>Planting plan by sun and soil</li><li>Phased cost breakdown</li></ul>
+      </article>
+      <article>
+        <h3><span class="k">02</span> Hardscape construction</h3>
+        <p>Patios, walkways, seat walls, steps and retaining walls. Compacted base, proper drainage, no settling in year two.</p>
+        <ul><li>Segmental and natural stone walls</li><li>Permeable and standard pavers</li><li>Drainage and grading correction</li></ul>
+      </article>
+      <article>
+        <h3><span class="k">03</span> Planting &amp; lawns</h3>
+        <p>Trees, shrubs and perennials chosen for the site rather than the truck. Sod, seeding and soil amendment.</p>
+        <ul><li>Nursery stock, tagged before delivery</li><li>Sod and overseeding</li><li>Bed edging and mulch</li></ul>
+      </article>
+      <article>
+        <h3><span class="k">04</span> Maintenance &amp; irrigation</h3>
+        <p>Weekly or biweekly care, spring and fall cleanups, irrigation start-ups and winterizing, and snow service.</p>
+        <ul><li>Scheduled maintenance routes</li><li>Irrigation service and repair</li><li>Winter snow and ice management</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Process</p>
+        <h2>From first call to first mow</h2>
+      </div>
+      <p class="lede" style="font-size:.95rem">Durations are typical for a full design-build project.</p>
+    </div>
+    <div class="flow">
+      <div class="phase"><span class="n">PHASE 1</span><h3>Site visit</h3><p>We walk the property, take measurements, and talk about how you actually use the yard.</p><span class="dur">Week 1 · free</span></div>
+      <div class="phase"><span class="n">PHASE 2</span><h3>Plan &amp; estimate</h3><p>A drawn plan, a plant list, and a line-item price. Two rounds of revisions included.</p><span class="dur">Weeks 2–3</span></div>
+      <div class="phase"><span class="n">PHASE 3</span><h3>Schedule &amp; permits</h3><p>Utility locates, any needed permits, and a start date you get in writing.</p><span class="dur">Weeks 4–6</span></div>
+      <div class="phase"><span class="n">PHASE 4</span><h3>Build</h3><p>One crew, one foreman, start to finish. Daily cleanup, and a text update each evening.</p><span class="dur">1–3 weeks on site</span></div>
+      <div class="phase"><span class="n">PHASE 5</span><h3>Walkthrough &amp; care</h3><p>Punch list closed out, watering schedule handed over, and a maintenance plan if you want one.</p><span class="dur">Ongoing</span></div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Recent work</p>
+        <h2>Three from last season</h2>
+      </div>
+    </div>
+    <div class="work">
+      <article class="job">
+        <div class="thumb">
+          <svg viewBox="0 0 300 170" role="img" aria-label="Diagram of a paver terrace stepping down to a lawn.">
+            <rect width="300" height="170" fill="#F1F4EF"></rect>
+            <g stroke="#1F4B36" stroke-width="1.3" fill="none">
+              <path d="M24 118h252M24 96h252M24 74h252"></path>
+              <path d="M60 74v66M104 74v66M148 74v66M192 74v66M236 74v66"></path>
+              <path d="M24 140h252"></path>
+              <circle cx="70" cy="46" r="17"></circle><path d="M70 63v11"></path>
+              <circle cx="228" cy="42" r="21"></circle><path d="M228 63v11"></path>
+            </g>
+            <path d="M24 140h252" stroke="#C98A12" stroke-width="3"></path>
+          </svg>
+        </div>
+        <div class="body">
+          <p class="meta">HARDSCAPE · 640 SQ FT</p>
+          <h3>Stepped paver terrace</h3>
+          <p>Two-level patio with a seat wall and buried downspout drainage on a lot that used to hold water.</p>
+        </div>
+      </article>
+      <article class="job">
+        <div class="thumb">
+          <svg viewBox="0 0 300 170" role="img" aria-label="Diagram of a layered planting border along a walkway.">
+            <rect width="300" height="170" fill="#F1F4EF"></rect>
+            <g stroke="#1F4B36" stroke-width="1.3" fill="none">
+              <path d="M18 132q70 -20 136 0t128 -10"></path>
+              <circle cx="58" cy="96" r="19"></circle><path d="M58 115v18"></path>
+              <circle cx="112" cy="84" r="26"></circle><path d="M112 110v22"></path>
+              <circle cx="178" cy="100" r="16"></circle><path d="M178 116v16"></path>
+              <circle cx="236" cy="88" r="22"></circle><path d="M236 110v20"></path>
+              <path d="M18 150h264"></path>
+            </g>
+            <path d="M18 141q70 -20 136 0t128 -10" stroke="#C98A12" stroke-width="2.4" stroke-dasharray="7 6" fill="none"></path>
+          </svg>
+        </div>
+        <div class="body">
+          <p class="meta">PLANTING · 38 SHRUBS, 6 TREES</p>
+          <h3>North-side shade border</h3>
+          <p>Layered border of serviceberry, oakleaf hydrangea and fern for a bed that gets four hours of sun.</p>
+        </div>
+      </article>
+      <article class="job">
+        <div class="thumb">
+          <svg viewBox="0 0 300 170" role="img" aria-label="Diagram of a segmental retaining wall with drainage stone behind it.">
+            <rect width="300" height="170" fill="#F1F4EF"></rect>
+            <g stroke="#1F4B36" stroke-width="1.3" fill="none">
+              <path d="M40 140h220M46 118h214M52 96h208M58 74h202"></path>
+              <path d="M40 140V74M260 140V74"></path>
+              <path d="M96 140V74M152 140V74M208 140V74"></path>
+              <path d="M58 74q60 -22 202 -14"></path>
+            </g>
+            <g fill="#C98A12" opacity=".6">
+              <circle cx="272" cy="92" r="4"></circle><circle cx="280" cy="106" r="4"></circle>
+              <circle cx="270" cy="120" r="4"></circle><circle cx="282" cy="132" r="4"></circle>
+            </g>
+          </svg>
+        </div>
+        <div class="body">
+          <p class="meta">RETAINING WALL · 4 FT TALL</p>
+          <h3>Segmental wall and regrade</h3>
+          <p>Engineered block wall with geogrid and a full drainage stone envelope, holding a slope off the driveway.</p>
+        </div>
+      </article>
+    </div>
+
+    <blockquote style="margin-top:44px">
+      <p>“They came back the next spring to check the plantings without being asked. Two of the hydrangeas had struggled and they replaced them.”</p>
+      <cite>— Homeowner, sample testimonial</cite>
+    </blockquote>
+  </section>
+
+  <section id="area">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Service area</p>
+        <h2>Where our trucks go</h2>
+        <p class="lede" style="margin-top:12px">Design-build within about 25 miles of the shop. Maintenance routes are tighter so crews stay on schedule.</p>
+        <div class="towns">
+          <span class="town">Town A</span><span class="town">Town B</span><span class="town">Town C</span>
+          <span class="town">Town D</span><span class="town">Town E</span><span class="town">Town F</span>
+          <span class="town">Town G</span><span class="town">Town H</span>
+        </div>
+        <div class="note">Placeholder content. Town names, phone, email, address, warranty terms, and project counts are stand-ins for the real Townsend details and should be replaced before this page goes live.</div>
+      </div>
+
+      <div id="estimate" class="cta">
+        <p class="eyebrow">Request an estimate</p>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem)">Tell us what the yard needs</h2>
+        <p style="font-size:.95rem;color:var(--ink-soft)">Call, email, or stop by the shop. We schedule site visits within a week and there is no charge for the first one.</p>
+        <div style="width:100%">
+          <div class="contact-line"><span>Call or text</span><a href="tel:+10000000000">(000) 000-0000</a></div>
+          <div class="contact-line"><span>Email</span><a href="mailto:hello@example.com">hello@example.com</a></div>
+          <div class="contact-line"><span>Shop hours, Mon–Fri 7 a.m. – 4 p.m.</span><strong>Shop address, City, ST</strong></div>
+        </div>
+        <a class="btn btn-primary" href="tel:+10000000000">Call the office</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Townsend Landscape · Design, build, maintain</div>
+    <div><a href="#estimate">Estimates</a> · Hiring year-round — see careers</div>
+  </footer>
+</div>
